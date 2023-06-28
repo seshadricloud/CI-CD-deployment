@@ -12,17 +12,17 @@ pipeline {
             }
         }
         
-        stage("Push to dockerhub") {
-            steps {
-                // Login to Dockerhub
-                withCredentials([string(credentialsId: 'docker-passwd', variable: 'dockerpssd')]) {
-                sh 'sudo docker login -u jeetlinux -p ${dockerpssd}'
+        // stage("Push to dockerhub") {
+        //     steps {
+        //         // Login to Dockerhub
+        //         withCredentials([string(credentialsId: 'docker-passwd', variable: 'dockerpssd')]) {
+        //         sh 'sudo docker login -u jeetlinux -p ${dockerpssd}'
                     
-                }
+        //         }
                 
-                // push the image to dockerhub
-                sh 'sudo docker tag helloapp:latest jeetlinux/demo-docker:v10'
-                sh 'sudo docker push jeetlinux/demo-docker:v10'
+        //         // push the image to dockerhub
+        //         sh 'sudo docker tag helloapp:latest jeetlinux/demo-docker:v10'
+        //         sh 'sudo docker push jeetlinux/demo-docker:v10'
                 
             }
         }
